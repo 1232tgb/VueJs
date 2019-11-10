@@ -1,0 +1,87 @@
+<meta charset="UTF-8">
+<script src="https://unpkg.com/vue"></script>
+
+<div id="app">
+    <contador1 identificador="contador 1"></contador1>
+    <contador1 identificador="contador 2"></contador1>
+    <contador1 identificador="contador 3"></contador1>
+</div>
+<hr>
+<div id="app2">
+    <app-contador identificador="contador 1"></app-contador>
+    <app-contador identificador="contador 2"></app-contador>
+    <app-contador identificador="contador 3"></app-contador>
+</div>
+
+<script>
+    /* Vue.component('contador', {
+                        template: `
+                        <div>
+                            <p>{{ identificador }}</p>
+                            <span>{{ contador }} </span>
+                            <button @click="increase()">+</button>
+                            <button @click="decrease()">-</button>
+                        </div>
+                        `,
+                        props: {
+                            identificador: String
+                        },
+                        data() {
+                            return {
+                                contador: 0
+                            }
+                        },
+                        methods: {
+                            increase() {
+                                this.contador++;
+                            },
+                            decrease() {
+                                this.contador--;
+                            }
+                        }
+                    })*/
+
+    const contador = {
+
+        template: `
+        <div>
+            <p>{{ identificador }}</p>
+            <span>{{ contador }} </span>
+            <button @click="increase()">+</button>
+            <button @click="decrease()">-</button>
+        </div>
+        `,
+        props: {
+            identificador: String
+        },
+        data() {
+            return {
+                contador: 0
+            }
+        },
+        methods: {
+            increase() {
+                this.contador++;
+            },
+            decrease() {
+                this.contador--;
+            }
+        },
+
+
+    }
+
+    new Vue({
+        el: '#app',
+        components: {
+            contador1: contador
+        }
+    })
+
+    new Vue({
+        el: '#app2',
+        components: {
+            'app-contador': contador
+        }
+    })
+</script>
