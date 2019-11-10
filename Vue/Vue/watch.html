@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <title>Vue - Watch</title>
+
+</head>
+
+<body>
+
+    <div id="app">
+        <div>
+            <div> kilometer: <input type="text" v-model="kilometer"> </div>
+            <div> meter: <input type="text" v-model="meter"> </div>
+        </div>
+            {{ reverseString }}
+        <div>
+            {{kilometer}} Kilometros e {{meter}} metros.
+        </div>
+
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
+    <script>
+        new Vue({
+            el: '#app',
+            data: {
+                meter: 0,
+                kilometer: 0
+            },
+            watch: {
+                kilometer(value) {
+                    this.kilometer = value;
+                    this.meter = value * 1000;
+                },
+                meter(value) {
+                    this.meter = value;
+                    this.kilometer = value/1000;
+                }
+            },
+            computed: {
+                reverseString(){
+                   return this.kilometer.toString().split('').reverse().join('');
+                }
+            },
+        });
+    </script>
+
+
+    
+</body>
+
+</html>

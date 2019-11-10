@@ -1,0 +1,28 @@
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
+<div id="app">
+
+  <div :id="GetID"></div>
+  <p>{{GetID}}</p>
+  <button @click="changeID()">MudarID</button>
+
+</div>
+
+<script>
+  new Vue({
+    el: "#app",
+    data: {
+      ID:"teste"
+    },
+    computed: {
+      GetID(){
+       return this.ID;
+      }
+    },
+    methods: {
+      changeID(){
+       this.ID +=" novo teste";
+      }
+    }
+  });
+</script>

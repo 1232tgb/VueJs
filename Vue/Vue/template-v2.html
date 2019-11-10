@@ -1,0 +1,73 @@
+
+<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
+<div id="app">
+  <div>
+  <button @click="Aumentar">Aumentar1</button>
+  <button @click="Diminuir">Diminuir1</button>
+</div>
+<div>
+  <button @click="Aumentar2">Aumentar2</button>
+  <button @click="Diminuir2">Diminuir2</button>
+</div :id="GetID">
+  <p>{{GetID}}</p>
+  <button @click="changeID()">MudarID</button>
+
+<div id="teste" class="w">teste</div>
+
+  <div>Contador - {{contador}} | {{contador2}} </div>
+  <div>Resultado1 - {{Resultado}}</div>
+  <div>Resultado2 - {{Resultado2}}</div>
+</div>
+
+<script>
+  new Vue({
+    el: "#app",
+    data: {
+      contador: 0,
+      contador2: 0,
+      ID:"teste"
+    },
+    computed: {
+      Resultado() {
+        console.log("Metodo Computed Resultado chamado...");
+        return this.contador >= 5 ? 'Contador maior ou igual a 5' : 'Contador menor que 5';
+      },
+      Resultado2() {
+        console.log("Metodo Computed Resultado2 chamado...");
+        return this.contador2 >= 5 ? 'Contador maior ou igual a 5' : 'Contador menor que 5';
+      }, 
+      GetID(){
+       return this.ID;
+      }
+    },
+    watch:{
+      contador(novo, antigo){
+        let teste = $("#teste");
+        teste.attr('class',this.contador);
+      }
+    },
+    methods: {
+      Aumentar() {
+        this.contador++;
+      },
+      Aumentar2() {
+        this.contador2++;
+      },
+      Diminuir() {
+        this.contador--;
+      },
+      Diminuir2(){
+        this.contador2--;
+      },  
+      changeID(){
+       this.ID +=" novo teste";
+      }//, 
+      // Resultado(){
+      //   console.log("Resultado chamado...");
+      //   return this.resultado = this.contador >= 5 ? 'Contador maior ou igual a 5' : 'Contador menor que 5';
+      // }
+    }
+  });
+</script>

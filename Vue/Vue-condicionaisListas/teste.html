@@ -1,0 +1,47 @@
+<meta charset="UTF-8">
+<script src="https://unpkg.com/vue"></script>
+
+<div id="app">
+
+    <p>{{number}}</p>
+    <p>{{resultComputed}}</p>
+
+    <p>{{number2}}</p>
+
+    <button @click="NumberCalculus(true)">add</button>
+    <button @click="NumberCalculus(false)">subtract</button>
+
+    <button @click="NumberCalculus2(true)">add2</button>
+    <button @click="NumberCalculus2(false)">subtract2</button>
+
+
+</div>
+
+<script>
+    new Vue({
+        el: '#app',
+        data: {
+            number: 1,
+            number2: 1
+        },
+        computed: {
+            resultComputed() {
+                return this.number > 0 ? 'Numero positivo' : 'Numero negativo';
+            }
+        },
+        methods: {
+            NumberCalculus(add) {
+                if (add)
+                    this.number += 1;
+                else
+                    this.number -= 1;
+            },
+            NumberCalculus2(add){
+                if (add)
+                    this.number2 += 1;
+                else
+                    this.number2 -= 1;
+            }
+        },
+    })
+</script>

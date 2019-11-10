@@ -1,0 +1,64 @@
+<script src="https://unpkg.com/vue"></script>
+
+<style>
+    .caixas {
+        display: flex;
+        justify-content: space-between;
+    }
+
+    .demo {
+        width: 100px;
+        height: 100px;
+        background-color: gray;
+    }
+
+    .c1 {
+        background-color: red;
+    }
+
+    .c2 {
+        background-color: green;
+    }
+
+    .c3 {
+        background-color: blue;
+    }
+</style>
+
+<div id="app">
+    <div class="caixas">
+        <div class="demo" :class="aplicar1" @click="switchC1()"></div>
+        <div class="demo" :class="{c2:aplicarC2}" @click="switchC2()"></div>
+        <div class="demo" :class="{c3:aplicarC3}" @click="switchC3()"></div>
+    </div>
+</div>
+
+<script>
+    new Vue({
+        el: '#app',
+        data: {
+            aplicarC1: false,
+            aplicarC2: false,
+            aplicarC3: false
+        },
+        methods: {
+            switchC1() {
+                this.aplicarC1 = !this.aplicarC1;
+            },
+            switchC2() {
+                this.aplicarC2 = !this.aplicarC2;
+            },
+            switchC3() {
+                this.aplicarC3 = !this.aplicarC3;
+            }
+        },
+        computed: {
+            aplicar1() {
+                return {
+                    c1: this.aplicarC1,
+                    c2: !this.aplicarC1
+                }
+            }
+        }
+    });
+</script>
